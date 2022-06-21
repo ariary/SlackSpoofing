@@ -11,6 +11,32 @@ import (
 
 func main() {
 	var cfg slackspoofing.Config
+
+	// direct message
+	var getIDCmd = &cobra.Command{Use: "getid",
+		Short: "Get user ID from user name",
+		Run: func(cmd *cobra.Command, args []string) {
+			// Init
+			if cfg.Username == "" {
+				cfg.Username = slackspoofing.WaitInput("username")
+			}
+			//retrieve user id
+			usersList, err := slackspoofing.GetUsersList(cfg)
+			if err != nil {
+				fmt.Println("error while retrieving users list:", err)
+				os.Exit(92)
+			}
+
+			for i := 0; i < len(usersList.Members); i++ {
+				if usersList.Members[i].RealName == cfg.Username {
+					fmt.Println(usersList.Members[i].Id)
+					os.Exit(0)
+				}
+			}
+			fmt.Fprint(os.Stderr, "do not retrieve user ID")
+		},
+	}
+
 	// direct message
 	var dmCmd = &cobra.Command{Use: "dm",
 		Short: "Spoof user visual identity to send direct messages (in Slackbot bot discussion channel)",
@@ -102,6 +128,7 @@ func main() {
 	rootCmd.PersistentFlags().StringVarP(&cfg.Message, "message", "m", "", "specify the message to send")
 
 	rootCmd.AddCommand(dmCmd)
+	rootCmd.AddCommand(getIDCmd)
 	rootCmd.Execute()
 
 }
