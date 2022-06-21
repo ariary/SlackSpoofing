@@ -1,3 +1,5 @@
 .*
 !.gitignore
 go.sum
+slack-spoofer*
+!slack-spoofer.go

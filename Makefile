@@ -1,5 +1,5 @@
 before.build:
 	go mod tidy && go mod download
 
-build.slackoff:
+build.slack-spoofer:
 	@echo "build in ${PWD}";go build slack-spoofer.go

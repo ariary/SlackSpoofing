@@ -10,7 +10,7 @@ Spoof visual user identity in Slack to send message
 
 Send a message in ***`#general`*** channel spoofing `Toto RINA` visual identity:
 ```shell
-slack-spoofer -u "Toto RINA" -c "#general" -m "Hi all!\nToday I'm the one paying for the meal!" -t $(cat .credentials.json | jq .bot_token) -w $(cat .credentials.json | jq .webhook)
+slack-spoofer -u "Toto RINA" -c "#general" -m 'Hi all!\nToday I'm the one paying for the meal!' -t $(cat .credentials.json | jq -r .bot_token) -w $(cat .credentials.json | jq -r .webhook)
 ```
 If the different flags are not provided they will be asked as input
 
