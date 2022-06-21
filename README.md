@@ -36,4 +36,4 @@ The tricks is not revolutionary:
 * ***Pentester idea:*** If you obtain an incoming webhook (leak, compromised etc) you can use it. Keep in mind that the scope is linked with the webhook creator (ie. webhook can publish in private channel where the creator is whitout needing an invitation)
 * Step 1 is automated here but can be manual if you do not have the permission to create slack app (view user profile, right-click on avatar, "Copy avatar url" )
 * Get user id (useful to mention them in message):  `slack-spoofer getid -u "[USER]" -t $(cat .credentials.json | jq -r .bot_token) -w $(cat .credentials.json | jq -r .webhook)`
-* `<!channel|channel>`send a notification to all channel users and <!here|here> to all channel online users
+* `<!channel|channel>`send a notification to all channel users and `<!here|here>` to all channel online users
