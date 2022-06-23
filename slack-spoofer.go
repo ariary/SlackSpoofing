@@ -87,7 +87,7 @@ func main() {
 	dmCmd.Flags().StringVarP(&cfg.Recipient, "recipient", "r", "", "specify recipient of direct message")
 
 	//CMD ROOT
-	var rootCmd = &cobra.Command{Use: "slackctl",
+	var rootCmd = &cobra.Command{Use: "slack-spoofer",
 		Short: "Spoof user  identity to send messages in Slack",
 		Run: func(cmd *cobra.Command, args []string) {
 			// Init
